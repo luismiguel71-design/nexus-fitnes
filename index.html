@@ -279,25 +279,94 @@
         </div>
     </footer>
 
-    <!-- Chatbox -->
-    <div class="chatbox-wrapper">
-        <div class="chatbox-window glass-card" id="chatboxWindow">
-            <div class="chatbox-header">
-                <h4>Asistente Nexus</h4>
-                <button id="closeChat">&times;</button>
+    <!-- AI Coach (Chat & Generators) -->
+    <div class="ai-coach-wrapper">
+        <div class="ai-coach-window glass-card" id="aiCoachWindow">
+            <div class="ai-coach-header">
+                <div class="ai-coach-title">
+                    <span class="ai-icon">🤖</span>
+                    <h4>Nexus AI Coach</h4>
+                </div>
+                <button id="closeAICoach">&times;</button>
             </div>
-            <div class="chatbox-messages" id="chatMessages">
-                <div class="message bot">
-                    <p>¡Hola! ¿En qué puedo ayudarte a superar tus límites hoy?</p>
+            
+            <div class="ai-coach-tabs">
+                <button class="ai-tab active" data-tab="chat">Chat</button>
+                <button class="ai-tab" data-tab="routine">Rutina IA</button>
+                <button class="ai-tab" data-tab="diet">Dieta IA</button>
+            </div>
+
+            <!-- Tab: Chat -->
+            <div class="ai-tab-content active" id="tab-chat">
+                <div class="ai-messages" id="aiChatMessages">
+                    <div class="message bot">
+                        <p>¡Soy tu Nexus AI Coach! ¿Buscas una rutina, una dieta, o tienes alguna duda?</p>
+                    </div>
+                </div>
+                <div class="ai-input">
+                    <input type="text" id="aiChatInput" placeholder="Pregúntame algo...">
+                    <button id="sendAIChat" class="btn-neon">▶</button>
                 </div>
             </div>
-            <div class="chatbox-input">
-                <input type="text" id="chatInput" placeholder="Escribe un mensaje...">
-                <button id="sendChat" class="btn-neon">Envíar</button>
+
+            <!-- Tab: Rutina -->
+            <div class="ai-tab-content" id="tab-routine">
+                <div class="ai-form">
+                    <p class="ai-form-desc">Genera una rutina semanal avalada por IA según tu nivel.</p>
+                    <label>Nivel:</label>
+                    <select id="routineLevel">
+                        <option value="principiante">Principiante (1-2 meses)</option>
+                        <option value="intermedio">Intermedio (3-6 meses)</option>
+                        <option value="avanzado">Avanzado (+1 año)</option>
+                    </select>
+                    
+                    <label>Objetivo:</label>
+                    <select id="routineGoal">
+                        <option value="hipertrofia">Ganar Músculo (Hipertrofia)</option>
+                        <option value="fuerza">Aumentar Fuerza</option>
+                        <option value="perdida">Pérdida de Grasa</option>
+                    </select>
+                    
+                    <button id="btnGenerateRoutine" class="btn-neon-glow full-width">GENERAR RUTINA</button>
+                </div>
             </div>
+
+            <!-- Tab: Dieta -->
+            <div class="ai-tab-content" id="tab-diet">
+                <div class="ai-form">
+                    <p class="ai-form-desc">Tu plan alimenticio personalizado al instante.</p>
+                    <label>Objetivo Nutricional:</label>
+                    <select id="dietGoal">
+                        <option value="volumen">Volumen (Superávit)</option>
+                        <option value="definicion">Definición (Déficit)</option>
+                        <option value="mantenimiento">Mantenimiento</option>
+                    </select>
+                    
+                    <label>Preferencia:</label>
+                    <select id="dietPref">
+                        <option value="tradicional">Tradicional</option>
+                        <option value="keto">Keto (Baja en carbohidratos)</option>
+                        <option value="vegano">Vegano</option>
+                    </select>
+                    
+                    <button id="btnGenerateDiet" class="btn-neon-glow full-width">GENERAR DIETA</button>
+                </div>
+            </div>
+            
+            <!-- Result Modal inside AI (Overlays tabs) -->
+            <div class="ai-result-overlay" id="aiResultOverlay">
+                <div class="ai-result-header">
+                    <button id="btnBackToForms" class="btn-text">← Volver</button>
+                    <h5>Resultado AI</h5>
+                </div>
+                <div class="ai-result-content" id="aiResultContent">
+                    <!-- Dynamic Result Goes Here -->
+                </div>
+            </div>
+            
         </div>
-        <button class="chatbox-toggle btn-neon-glow" id="chatToggle">
-            💬 Chat
+        <button class="ai-coach-toggle btn-neon-glow" id="aiCoachToggle">
+            🤖 Nexus AI
         </button>
     </div>
 
