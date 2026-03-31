@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nexus Fitness | Supera tus Límites</title>
+    <meta name="description" content="Nexus Fitness: El gimnasio de alta gama para alcanzar tu máximo potencial.">
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Montserrat:wght@300;400;600;700&display=swap"
+        rel="stylesheet">
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="styles.css">
+    
+    <!-- Swiper CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"/>
+</head>
+
+<body>
+    <!-- Navbar -->
+    <nav class="navbar">
+        <a href="#" class="logo-container">
+            <svg class="logo-svg" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                <!-- Cuchilla Izquierda -->
+                <path d="M15,90 L30,10 L45,10 L30,90 Z" fill="#ffffff" />
+                <!-- Cuchilla Derecha -->
+                <path d="M55,90 L70,10 L85,10 L70,90 Z" fill="#39FF14" />
+                <!-- Diagonal Agresiva -->
+                <path d="M30,30 L70,80 L85,80 L45,30 Z" fill="#39FF14" />
+            </svg>
+            <div class="logo-text">NEXUS<span>FITNESS</span></div>
+        </a>
+        <ul class="nav-links">
+            <li><a href="#servicios">Servicios</a></li>
+            <li><a href="#horario">Horario</a></li>
+            <li><a href="#galeria">Galería</a></li>
+            <li><a href="#testimonios">Testimonios</a></li>
+            <li><a href="#membresias">Membresías</a></li>
+            <li><a href="#ubicacion">Ubicación</a></li>
+        </ul>
+        <button class="btn-neon open-modal-btn">ÚNETE AHORA</button>
+    </nav>
+
+    <!-- Hero Section -->
+    <header class="hero">
+        <video autoplay muted loop playsinline class="hero-video" poster="https://images.unsplash.com/photo-1534438327276-14e5300c3a48?q=80&w=1600&auto=format&fit=crop">
+            <source src="https://assets.mixkit.co/videos/preview/mixkit-man-training-with-battle-ropes-in-gym-14695-large.mp4" type="video/mp4">
+            Tu navegador no soporta video HTML5.
+        </video>
+        <div class="hero-overlay"></div>
+        <div class="hero-content">
+            <h1 class="hero-title">SUPERA TUS LÍMITES</h1>
+            <p class="hero-subtitle">El entorno definitivo para atletas exigentes. Tecnología, fuerza y la mejor comunidad.</p>
+            <button class="btn-neon-glow open-modal-btn">EMPIEZA TU TRANSFORMACIÓN</button>
+        </div>
+    </header>
+
+    <!-- Servicios Section -->
+    <section id="servicios" class="services">
+        <h2 class="section-title">NUESTROS SERVICIOS</h2>
+        <div class="services-grid">
+            <div class="glass-card service-card">
+                <div class="service-img">
+                    <img src="https://images.unsplash.com/photo-1581009146145-b5ef050c2e1e?q=80&w=800&auto=format&fit=crop" alt="Zona de Fuerza">
+                </div>
+                <h3>Zona de Fuerza</h3>
+                <p>Equipamiento de última generación para levantamiento olímpico y powerlifting.</p>
+            </div>
+            <div class="glass-card service-card">
+                <div class="service-img">
+                    <img src="https://images.unsplash.com/photo-1534438327276-14e5300c3a48?q=80&w=800&auto=format&fit=crop" alt="Entrenamiento Funcional">
+                </div>
+                <h3>Entrenamiento Funcional</h3>
+                <p>Espacios abiertos con césped artificial preparados para rutinas dinámicas y de alta intensidad.</p>
+            </div>
+            <div class="glass-card service-card">
+                <div class="service-img">
+                    <img src="https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?q=80&w=800&auto=format&fit=crop" alt="Recuperación">
+                </div>
+                <h3>Recuperación</h3>
+                <p>Zona de descanso con sauna, crioterapia y servicio de masajes deportivos.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Horario Section -->
+    <section id="horario" class="schedule">
+        <h2 class="section-title">HORARIO DE CLASES</h2>
+        <div class="schedule-container">
+            <table class="schedule-table">
+                <thead>
+                    <tr>
+                        <th>Hora</th>
+                        <th>Lunes</th>
+                        <th>Miércoles</th>
+                        <th>Viernes</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>07:00 AM</td>
+                        <td>CrossFit</td>
+                        <td>Halterofilia</td>
+                        <td>CrossFit</td>
+                    </tr>
+                    <tr>
+                        <td>12:00 PM</td>
+                        <td>HIIT</td>
+                        <td>Funcional</td>
+                        <td>HIIT</td>
+                    </tr>
+                    <tr>
+                        <td>06:00 PM</td>
+                        <td>Powerlifting</td>
+                        <td>Fuerza Libre</td>
+                        <td>Yoga Recovery</td>
+                    </tr>
+                    <tr>
+                        <td>08:00 PM</td>
+                        <td>MMA Base</td>
+                        <td>CrossFit</td>
+                        <td>Open Box</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </section>
+
+    <!-- Galeria Section -->
+    <section id="galeria" class="gallery">
+        <h2 class="section-title">INSTALACIONES PREMIUM</h2>
+        <div class="gallery-masonry">
+            <!-- Bloque superior de la cuadrícula -->
+            <div class="gallery-item large"><img src="https://images.unsplash.com/photo-1540497077202-7c8a3999166f?q=80&w=800&auto=format&fit=crop" alt="Gym Pic 1"></div>
+            <div class="gallery-item tall"><img src="https://images.unsplash.com/photo-1571019614242-c5c5dee9f50b?q=80&w=600&auto=format&fit=crop" alt="Gym Pic 2"></div>
+            <!-- Bloque inferior de la cuadrícula -->
+            <div class="gallery-item normal"><img src="https://images.unsplash.com/photo-1554284126-aa88f22d8b74?q=80&w=600&auto=format&fit=crop" alt="Gym Pic 3"></div>
+            <div class="gallery-item normal"><img src="https://images.unsplash.com/photo-1574680096145-d05b474e2155?q=80&w=600&auto=format&fit=crop" alt="Gym Pic 4"></div>
+            <div class="gallery-item normal"><img src="https://images.unsplash.com/photo-1605296867304-46d5465a13f1?q=80&w=800&auto=format&fit=crop" alt="Gym Pic 5"></div>
+        </div>
+    </section>
+
+    <!-- Testimonios Section -->
+    <section id="testimonios" class="testimonials">
+        <h2 class="section-title">LO QUE DICEN NUESTROS ATLETAS</h2>
+        <!-- Swiper Structure -->
+        <div class="swiper testimonials-slider">
+            <div class="swiper-wrapper">
+                
+                <div class="swiper-slide">
+                    <div class="glass-card testimonial-card">
+                        <div class="test-header">
+                            <img src="assets/test1.png" alt="Testimonio de Juan" class="avatar" onerror="this.src='https://ui-avatars.com/api/?name=Carlos+M&background=random'">
+                            <div>
+                                <h4>Carlos M.</h4>
+                                <span class="role">Atleta Amateur</span>
+                            </div>
+                        </div>
+                        <p>"La iluminación, el equipo y la energía de Nexus me mantienen enfocado como nunca antes. El mejor gimnasio."</p>
+                    </div>
+                </div>
+
+                <div class="swiper-slide">
+                    <div class="glass-card testimonial-card">
+                        <div class="test-header">
+                            <img src="assets/test2.png" alt="Testimonio de Laura" class="avatar" onerror="this.src='https://ui-avatars.com/api/?name=Laura+V&background=random'">
+                            <div>
+                                <h4>Laura V.</h4>
+                                <span class="role">Competidora Funcional</span>
+                            </div>
+                        </div>
+                        <p>"Entrenar aquí es súper motivador. Las instalaciones son top y siempre hay espacio para dar el 100% de ti."</p>
+                    </div>
+                </div>
+
+                <div class="swiper-slide">
+                    <div class="glass-card testimonial-card">
+                        <div class="test-header">
+                            <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&h=100&fit=crop" alt="Testimonio de Miguel" class="avatar">
+                            <div>
+                                <h4>Miguel S.</h4>
+                                <span class="role">Culturista</span>
+                            </div>
+                        </div>
+                        <p>"La zona de fuerza tiene todo lo que necesito. Racks suficientes, discos olímpicos de calidad y grandes resultados."</p>
+                    </div>
+                </div>
+
+                <div class="swiper-slide">
+                    <div class="glass-card testimonial-card">
+                        <div class="test-header">
+                            <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=100&h=100&fit=crop" alt="Testimonio de Andrea" class="avatar">
+                            <div>
+                                <h4>Andrea F.</h4>
+                                <span class="role">Yoga & Bienestar</span>
+                            </div>
+                        </div>
+                        <p>"Venir al sauna después de una intensa rutina no tiene precio. El nivel de limpieza es impecable."</p>
+                    </div>
+                </div>
+                
+            </div>
+            <!-- Swiper Pagination -->
+            <div class="swiper-pagination"></div>
+        </div>
+    </section>
+
+    <!-- Membresías Section -->
+    <section id="membresias" class="pricing">
+        <h2 class="section-title">MEMBRESÍAS</h2>
+        <div class="pricing-grid">
+            <div class="glass-card pricing-card">
+                <h3>Básico</h3>
+                <div class="price">$50<span>/mes</span></div>
+                <ul>
+                    <li>Acceso al gimnasio 24/7</li>
+                    <li>Uso de saunas</li>
+                    <li>Casillero diario</li>
+                </ul>
+                <button class="btn-outline open-modal-btn">Elegir Plan</button>
+            </div>
+            <div class="glass-card pricing-card premium-card">
+                <div class="badge">Recomendado</div>
+                <h3>Pro Elite</h3>
+                <div class="price">$90<span>/mes</span></div>
+                <ul>
+                    <li>Acceso a todas las clases</li>
+                    <li>Evaluación mensual</li>
+                    <li>Sesión de crioterapia</li>
+                    <li>Acceso a eventos VIP</li>
+                </ul>
+                <button class="btn-neon open-modal-btn">Elegir Plan</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Ubicación Section -->
+    <section id="ubicacion" class="location">
+        <h2 class="section-title">ENCUÉNTRANOS</h2>
+        <div class="location-container glass-card">
+            <div class="location-info">
+                <h3>Nexus Fitness HQ</h3>
+                <p><strong>Dirección:</strong> Av. 20 de Novienbre</p>
+                <p><strong>Teléfono:</strong> 5545678904</p>
+                <p><strong>Email:</strong> contacto@gmail.com</p>
+                <div class="location-hours">
+                    <h4>Horarios de Apertura</h4>
+                    <p>Lunes a Viernes: 24 Horas</p>
+                    <p>Sábados y Domingos: 6:00 AM - 10:00 PM</p>
+                </div>
+            </div>
+            <div class="location-map">
+                <iframe src="https://maps.google.com/maps?q=19.4056468,-98.9230447&hl=es&z=17&output=embed" width="100%"
+                    height="100%" style="border:0;" allowfullscreen="" loading="lazy"
+                    referrerpolicy="no-referrer-when-downgrade"></iframe>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <a href="#" class="logo-container" style="justify-content: center;">
+                <svg class="logo-svg" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                    <!-- Cuchilla Izquierda -->
+                    <path d="M15,90 L30,10 L45,10 L30,90 Z" fill="#ffffff" />
+                    <!-- Cuchilla Derecha -->
+                    <path d="M55,90 L70,10 L85,10 L70,90 Z" fill="#39FF14" />
+                    <!-- Diagonal Agresiva -->
+                    <path d="M30,30 L70,80 L85,80 L45,30 Z" fill="#39FF14" />
+                </svg>
+                <div class="logo-text">NEXUS<span>FITNESS</span></div>
+            </a>
+            <p>© 2026 Nexus Fitness. Todos los derechos reservados.</p>
+        </div>
+    </footer>
+
+    <!-- Chatbox -->
+    <div class="chatbox-wrapper">
+        <div class="chatbox-window glass-card" id="chatboxWindow">
+            <div class="chatbox-header">
+                <h4>Asistente Nexus</h4>
+                <button id="closeChat">&times;</button>
+            </div>
+            <div class="chatbox-messages" id="chatMessages">
+                <div class="message bot">
+                    <p>¡Hola! ¿En qué puedo ayudarte a superar tus límites hoy?</p>
+                </div>
+            </div>
+            <div class="chatbox-input">
+                <input type="text" id="chatInput" placeholder="Escribe un mensaje...">
+                <button id="sendChat" class="btn-neon">Envíar</button>
+            </div>
+        </div>
+        <button class="chatbox-toggle btn-neon-glow" id="chatToggle">
+            💬 Chat
+        </button>
+    </div>
+
+    <!-- Lead Generation Modal -->
+    <div id="leadModal" class="modal-overlay">
+        <div class="modal-content glass-card">
+            <button id="closeModal" class="modal-close">&times;</button>
+            <h2 class="modal-title">EMPIEZA HOY</h3>
+            <p>Deja tus datos y obtén una <strong>clase de prueba gratuita</strong>.</p>
+            <form id="leadForm" class="lead-form">
+                <input type="text" placeholder="Nombre completo" required>
+                <input type="email" placeholder="Correo electrónico" required>
+                <input type="tel" placeholder="Teléfono" required>
+                <button type="submit" class="btn-neon-glow" style="width: 100%; margin-top: 10px;">ENVIAR SOLICITUD</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Swiper JS -->
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <script src="script.js"></script>
+</body>
+
+</html>
