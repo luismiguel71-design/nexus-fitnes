@@ -1,4 +1,55 @@
 document.addEventListener('DOMContentLoaded', () => {
+    // Custom Cursor Logic
+    const cursor = document.querySelector('.custom-cursor');
+    const hoverElements = document.querySelectorAll('a, button, input, select, .tilt-card');
+
+    if (cursor) {
+        document.addEventListener('mousemove', (e) => {
+            cursor.style.left = e.clientX + 'px';
+            cursor.style.top = e.clientY + 'px';
+        });
+
+        hoverElements.forEach(el => {
+            el.addEventListener('mouseenter', () => cursor.classList.add('hovering'));
+            el.addEventListener('mouseleave', () => cursor.classList.remove('hovering'));
+        });
+    }
+
+    // Parallax Effect for Hero Video
+    const heroVideo = document.querySelector('.hero-video');
+    window.addEventListener('scroll', () => {
+        if (heroVideo) {
+            let scrollPosition = window.pageYOffset;
+            heroVideo.style.transform = `translateX(-50%) translateY(calc(-50% + ${scrollPosition * 0.4}px))`;
+        }
+    });
+
+    // 3D Tilt Effect for Coaches
+    const tiltCards = document.querySelectorAll('.tilt-card');
+    tiltCards.forEach(card => {
+        card.addEventListener('mousemove', (e) => {
+            const rect = card.getBoundingClientRect();
+            const x = e.clientX - rect.left; // X position within the element
+            const y = e.clientY - rect.top;  // Y position within the element
+            const centerX = rect.width / 2;
+            const centerY = rect.height / 2;
+            
+            // Calculate rotation (max 15 degrees)
+            const rotateX = ((y - centerY) / centerY) * -15;
+            const rotateY = ((x - centerX) / centerX) * 15;
+            
+            card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale3d(1.05, 1.05, 1.05)`;
+        });
+
+        card.addEventListener('mouseleave', () => {
+            card.style.transform = `perspective(1000px) rotateX(0deg) rotateY(0deg) scale3d(1, 1, 1)`;
+            card.style.transition = 'transform 0.5s ease';
+        });
+
+        card.addEventListener('mouseenter', () => {
+            card.style.transition = 'none'; // remove transition for smooth tracking
+        });
+    });
     // Smooth scroll for anchor links
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.addEventListener('click', function (e) {
@@ -265,14 +316,69 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
-    // Form Mock Submit
+    // Advanced Form Submit (AJAX with Formsubmit.co)
     const leadForm = document.getElementById('leadForm');
+    const bookingFormSection = document.getElementById('bookingFormSection');
+    const ticketSuccessSection = document.getElementById('ticketSuccessSection');
+    
+    // Ticket Spans
+    const tckName = document.getElementById('tckName');
+    const tckDate = document.getElementById('tckDate');
+    const tckTime = document.getElementById('tckTime');
+    const tckClass = document.getElementById('tckClass');
+
     if(leadForm) {
+        // Set minimum date to today
+        const datePicker = document.getElementById('datePicker');
+        if (datePicker) {
+            const today = new Date().toISOString().split('T')[0];
+            datePicker.setAttribute('min', today);
+        }
+
         leadForm.addEventListener('submit', (e) => {
-            e.preventDefault();
-            alert('¡Solicitud enviada! Nos pondremos en contacto contigo.');
-            modalOverlay.classList.remove('active');
-            leadForm.reset();
+            e.preventDefault(); // Prevent page reload
+            
+            const submitBtn = leadForm.querySelector('button[type="submit"]');
+            const originalBtnText = submitBtn.innerHTML;
+            submitBtn.innerHTML = "PROCESANDO RESERVA...";
+            submitBtn.disabled = true;
+
+            const formData = new FormData(leadForm);
+
+            // Fetch request to Formsubmit via AJAX
+            fetch(leadForm.action, {
+                method: 'POST',
+                body: formData,
+                headers: {
+                    'Accept': 'application/json'
+                }
+            })
+            .then(response => {
+                if(response.ok) {
+                    // Success! Show VIP Ticket
+                    const name = formData.get('name');
+                    const fecha = formData.get('fecha');
+                    const hora = formData.get('hora');
+                    const clase = formData.get('clase');
+
+                    tckName.textContent = name;
+                    tckDate.textContent = fecha;
+                    tckTime.textContent = hora;
+                    tckClass.textContent = clase;
+
+                    bookingFormSection.style.display = 'none';
+                    ticketSuccessSection.style.display = 'block';
+                } else {
+                    alert('Hubo un problema al enviar la solicitud. Inténtalo de nuevo.');
+                    submitBtn.innerHTML = originalBtnText;
+                    submitBtn.disabled = false;
+                }
+            })
+            .catch(error => {
+                alert('Fallo de conexión. Tu solicitud no pudo enviarse.');
+                submitBtn.innerHTML = originalBtnText;
+                submitBtn.disabled = false;
+            });
         });
     }
 });

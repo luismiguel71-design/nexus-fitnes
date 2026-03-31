@@ -21,6 +21,8 @@
 </head>
 
 <body>
+    <!-- Custom Cursor -->
+    <div class="custom-cursor"></div>
     <!-- Navbar -->
     <nav class="navbar">
         <a href="#" class="logo-container">
@@ -84,6 +86,56 @@
                 <h3>Recuperación</h3>
                 <p>Zona de descanso con sauna, crioterapia y servicio de masajes deportivos.</p>
             </div>
+        </div>
+    </section>
+
+    <!-- Entrenadores / Coaches Section -->
+    <section id="entrenadores" class="coaches">
+        <h2 class="section-title">ELITE COACHES</h2>
+        <div class="coaches-grid">
+            
+            <div class="coach-card-container">
+                <div class="coach-card tilt-card glass-card">
+                    <img src="https://images.unsplash.com/photo-1594381898411-846e7d193883?w=500&h=600&fit=crop" alt="Coach 1" class="coach-img">
+                    <div class="coach-info">
+                        <h3>Alex Volkov</h3>
+                        <span class="coach-spec">CrossFit & Fuerza</span>
+                        <p>Ex-Militar Ruso. Especialista en acondicionamiento extremo y levantamiento olímpico.</p>
+                        <div class="coach-socials">
+                            <a href="#">📷 IG</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="coach-card-container">
+                <div class="coach-card tilt-card glass-card">
+                    <img src="https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=500&h=600&fit=crop" alt="Coach 2" class="coach-img">
+                    <div class="coach-info">
+                        <h3>Sarah Jenkins</h3>
+                        <span class="coach-spec">Hipertrofia & Nutrición</span>
+                        <p>Campeona IFBB Pro. Transformará tu composición corporal con ciencia y disciplina.</p>
+                        <div class="coach-socials">
+                            <a href="#">📷 IG</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="coach-card-container">
+                <div class="coach-card tilt-card glass-card">
+                    <img src="https://images.unsplash.com/photo-1583454155184-870a1f63aebc?w=500&h=600&fit=crop" alt="Coach 3" class="coach-img">
+                    <div class="coach-info">
+                        <h3>Leo 'Tank' Rodríguez</h3>
+                        <span class="coach-spec">Funcional & MMA Base</span>
+                        <p>Máxima agilidad. Sus circuitos metabólicos pondrán a prueba todos tus límites.</p>
+                        <div class="coach-socials">
+                            <a href="#">📷 IG</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
         </div>
     </section>
 
@@ -370,18 +422,63 @@
         </button>
     </div>
 
-    <!-- Lead Generation Modal -->
+    <!-- Lead Generation Modal VIP -->
     <div id="leadModal" class="modal-overlay">
-        <div class="modal-content glass-card">
+        <div class="modal-content glass-card ticket-modal">
             <button id="closeModal" class="modal-close">&times;</button>
-            <h2 class="modal-title">EMPIEZA HOY</h3>
-            <p>Deja tus datos y obtén una <strong>clase de prueba gratuita</strong>.</p>
-            <form id="leadForm" class="lead-form">
-                <input type="text" placeholder="Nombre completo" required>
-                <input type="email" placeholder="Correo electrónico" required>
-                <input type="tel" placeholder="Teléfono" required>
-                <button type="submit" class="btn-neon-glow" style="width: 100%; margin-top: 10px;">ENVIAR SOLICITUD</button>
-            </form>
+            <div id="bookingFormSection">
+                <h2 class="modal-title">AGENDAR CLASE DE PRUEBA</h2>
+                <p style="color:var(--text-secondary); margin-bottom: 20px;">Reserva tu lugar ahora. Los datos serán recibidos internamente por la administración de Nexus.</p>
+                <form id="leadForm" class="lead-form" action="https://formsubmit.co/cufm71@hotmail.com" method="POST">
+                    <!-- Configuración invisible de Formsubmit -->
+                    <input type="hidden" name="_subject" value="¡Nuevo Lead de Nexus Fitness!">
+                    <input type="hidden" name="_captcha" value="false">
+                    <input type="hidden" name="_next" id="nextUrl" value="">
+                    
+                    <input type="text" name="name" placeholder="Tu Nombre Completo" required>
+                    <input type="email" name="email" placeholder="Tu Correo Electrónico" required>
+                    
+                    <div style="display:flex; gap: 10px; margin-top:5px;">
+                        <input type="date" name="fecha" required style="flex:1;" min="" id="datePicker">
+                        <select name="hora" required style="flex:1; background:rgba(255,255,255,0.05); border:1px solid rgba(255,255,255,0.1); color:white; border-radius:4px; padding:10px;">
+                            <option value="">Hora de Visita...</option>
+                            <option value="07:00 AM">07:00 AM</option>
+                            <option value="12:00 PM">12:00 PM</option>
+                            <option value="06:00 PM">06:00 PM</option>
+                            <option value="08:00 PM">08:00 PM</option>
+                        </select>
+                    </div>
+
+                    <select name="clase" required style="background:rgba(255,255,255,0.05); border:1px solid rgba(255,255,255,0.1); color:white; border-radius:4px; padding:10px; margin-top:5px;">
+                        <option value="">¿De qué será tu prueba?</option>
+                        <option value="CrossFit">CrossFit</option>
+                        <option value="Musculación">Musculación / Hipertrofia</option>
+                        <option value="Funcional / MMA">Funcional / MMA Base</option>
+                    </select>
+
+                    <button type="submit" class="btn-neon-glow" style="width: 100%; margin-top: 15px;">AGENDAR Y GENERAR TICKET</button>
+                </form>
+            </div>
+            
+            <div id="ticketSuccessSection" style="display:none; text-align: center;">
+                <div class="lottie-check" style="font-size: 4rem; color:var(--neon-green); margin-bottom:10px;">✔</div>
+                <h3 style="color:white; margin-bottom:5px;">¡RESERVA CREADA!</h3>
+                <p style="color:var(--text-secondary); font-size: 0.9rem; margin-bottom:20px;">Presenta este pase digital en recepción.</p>
+                
+                <div class="vip-ticket">
+                    <div class="ticket-header">
+                        <strong>NEXUS FITNESS VIP PASS</strong>
+                    </div>
+                    <div class="ticket-body">
+                        <p><strong>A nombre de:</strong> <span id="tckName">...</span></p>
+                        <p><strong>Fecha:</strong> <span id="tckDate">...</span> - <span id="tckTime">...</span></p>
+                        <p><strong>Clase:</strong> <span id="tckClass">...</span></p>
+                        <div class="qr-code">
+                            <img src="https://api.qrserver.com/v1/create-qr-code/?size=100x100&data=NexusTrial" alt="QR Code">
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 
