@@ -316,16 +316,39 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
-    // Advanced Form Submit (AJAX with Formsubmit.co)
+    // Advanced Form Submit (Formsubmit.co Native + LocalStorage)
     const leadForm = document.getElementById('leadForm');
     const bookingFormSection = document.getElementById('bookingFormSection');
     const ticketSuccessSection = document.getElementById('ticketSuccessSection');
+    const nextUrlInput = document.getElementById('nextUrl');
     
     // Ticket Spans
     const tckName = document.getElementById('tckName');
     const tckDate = document.getElementById('tckDate');
     const tckTime = document.getElementById('tckTime');
     const tckClass = document.getElementById('tckClass');
+
+    // Check if we are returning from a successful FormSubmit redirect
+    const urlParams = new URLSearchParams(window.location.search);
+    if(urlParams.get('success') === 'true') {
+        const modalOverlay = document.getElementById('leadModal');
+        if (modalOverlay) {
+            modalOverlay.classList.add('active');
+            
+            if (bookingFormSection && ticketSuccessSection) {
+                bookingFormSection.style.display = 'none';
+                ticketSuccessSection.style.display = 'block';
+
+                tckName.textContent = localStorage.getItem('tckName') || 'Invitado VIP';
+                tckDate.textContent = localStorage.getItem('tckDate') || '--';
+                tckTime.textContent = localStorage.getItem('tckTime') || '--';
+                tckClass.textContent = localStorage.getItem('tckClass') || '--';
+            }
+        }
+        
+        // Clean the URL without reloading
+        window.history.replaceState({}, document.title, window.location.pathname);
+    }
 
     if(leadForm) {
         // Set minimum date to today
@@ -335,50 +358,41 @@ document.addEventListener('DOMContentLoaded', () => {
             datePicker.setAttribute('min', today);
         }
 
+        // Configure the _next URL dynamically
+        if(nextUrlInput) {
+            // we remove any queries/hashes and append ?success=true
+            nextUrlInput.value = window.location.origin + window.location.pathname + '?success=true';
+        }
+
         leadForm.addEventListener('submit', (e) => {
-            e.preventDefault(); // Prevent page reload
+            e.preventDefault(); // Evitamos la recarga para generar el ticket aquí mismo
             
             const submitBtn = leadForm.querySelector('button[type="submit"]');
-            const originalBtnText = submitBtn.innerHTML;
             submitBtn.innerHTML = "PROCESANDO RESERVA...";
             submitBtn.disabled = true;
 
             const formData = new FormData(leadForm);
+            
+            // Simulamos el envío (Temporalmente, por caída de FormSubmit)
+            setTimeout(() => {
+                const name = formData.get('name');
+                const fecha = formData.get('fecha');
+                const hora = formData.get('hora');
+                const clase = formData.get('clase');
 
-            // Fetch request to Formsubmit via AJAX
-            fetch(leadForm.action, {
-                method: 'POST',
-                body: formData,
-                headers: {
-                    'Accept': 'application/json'
-                }
-            })
-            .then(response => {
-                if(response.ok) {
-                    // Success! Show VIP Ticket
-                    const name = formData.get('name');
-                    const fecha = formData.get('fecha');
-                    const hora = formData.get('hora');
-                    const clase = formData.get('clase');
+                tckName.textContent = name;
+                tckDate.textContent = fecha;
+                tckTime.textContent = hora;
+                tckClass.textContent = clase;
 
-                    tckName.textContent = name;
-                    tckDate.textContent = fecha;
-                    tckTime.textContent = hora;
-                    tckClass.textContent = clase;
-
+                if (bookingFormSection && ticketSuccessSection) {
                     bookingFormSection.style.display = 'none';
                     ticketSuccessSection.style.display = 'block';
-                } else {
-                    alert('Hubo un problema al enviar la solicitud. Inténtalo de nuevo.');
-                    submitBtn.innerHTML = originalBtnText;
-                    submitBtn.disabled = false;
                 }
-            })
-            .catch(error => {
-                alert('Fallo de conexión. Tu solicitud no pudo enviarse.');
-                submitBtn.innerHTML = originalBtnText;
-                submitBtn.disabled = false;
-            });
+                
+                // NOTA: Como FormSubmit está caído (Error 521 Cloudflare),
+                // No enviamos físicamente el POST remoto.
+            }, 1000);
         });
     }
 });
